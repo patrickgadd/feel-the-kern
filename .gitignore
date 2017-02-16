@@ -1,0 +1,12 @@
+.idea/
+
+*.json
+*.pyc
+*.png
+*.jpg
+*.npz
+*.zip
+*.ttf
+*.txt
+
+3-matching-trigrams/data/
