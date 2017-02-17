@@ -88,7 +88,7 @@ def render_text(text, output_shape, font_path):
 
 	return image
 
-def generate_data(data_cnt, n, alphabet, z_dim, output_shape=(68,40), mode='return'):
+def generate_data(data_cnt, n_gram_n, alphabet, z_dim, output_shape=(68,40), mode='return'):
 	zs = [] # will be merged with one_hots into X
 	one_hots = [] # will be merged with zs into X
 	Y = []
@@ -118,7 +118,7 @@ def generate_data(data_cnt, n, alphabet, z_dim, output_shape=(68,40), mode='retu
 		# Generate the bigram text
 		text = ''
 		char_idxs = []
-		for i in range(n):
+		for i in range(n_gram_n):
 			char_idx = int(uniform(0,len(alphabet)))
 			char_idxs.append(char_idx)
 			text += alphabet[char_idx]
@@ -166,8 +166,8 @@ def generate_data(data_cnt, n, alphabet, z_dim, output_shape=(68,40), mode='retu
 	if mode =='return':
 		return [np.asarray(X).astype('float32'), np.asarray(Y).astype('float32')]
 
-def get_batch(data_cnt, n, alphabet, z_dim, output_shape):
-	(X, Y) = generate_data(data_cnt, n, alphabet, z_dim, output_shape, mode='return')
+def get_batch(data_cnt, n_gram_n, alphabet, z_dim, output_shape):
+	(X, Y) = generate_data(data_cnt, n_gram_n, alphabet, z_dim, output_shape, mode='return')
 	X = np.reshape(X, (data_cnt, 1, X.shape[1]))
 	Y = np.reshape(Y, (data_cnt, 1, Y.shape[1], Y.shape[2]))
 
@@ -175,7 +175,7 @@ def get_batch(data_cnt, n, alphabet, z_dim, output_shape):
 
 
 if __name__ == "__main__":
-	(X, Y) = generate_data(3)
+	(X, Y) = generate_data(3, 2, 'ASDF', 10, (65, 41))
 	print(X)
 
 
