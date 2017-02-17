@@ -4,7 +4,7 @@
 This is the code relating to [my blog post](https://patrickgadd.github.io/feel-the-kern/) on generating proportional fonts with kerning using deep learning.
 People have previously generated plenty of characters that can be used as monospaced fonts, but as far as I am aware, none with kerning.
 
-![Animation of continuum of monospaced fonts](https://github.com/patrickgadd/fonts-generation-all/blob/master/assets/monospaced.gif?raw=true)
+![Animation of continuum of monospaced fonts](https://raw.githubusercontent.com/patrickgadd/feel-the-kern/master/assets/monospaced.gif)
 
 The above is similar what to previously has been done; generating smooth interpolations between the characters of generated fonts, but disregarding the inter-character spacing used in most fonts used in practise.
 
@@ -12,11 +12,11 @@ So I generated bigrams of fonts, as this would force the model to also learn a n
 
 These bigrams were then overlapped using simulated annealing to create words and sentences from the randomly generated fonts:
 
-![Animation of bigram matching using simulated annealing](https://github.com/patrickgadd/fonts-generation-all/blob/master/assets/matching-bigrams.gif?raw=true)
+![Animation of bigram matching using simulated annealing](https://raw.githubusercontent.com/patrickgadd/feel-the-kern/master/assets/matching-bigrams.gif?raw=true)
 
 Ultimately, this allowed me to generate smooth interpolations between different styles of fonts that incorporate kerning:
 
-![Interpolations between generated fonts](https://github.com/patrickgadd/fonts-generation-all/blob/master/assets/kerning-interpolation.jpg)
+![Interpolations between generated fonts](https://raw.githubusercontent.com/patrickgadd/feel-the-kern/master/assets/kerning-interpolation.jpg)
 
 Note how "X" and "A" for some of the generated fonts touch, but for others are quite far apart.
 This goes to show that the model did learn to kern fonts according to their style.
@@ -60,6 +60,6 @@ Steps 1 and 2 are mapping fonts to a style-vector, steps 3 and 4 are on training
 5. Run "/3-matching-bigrams/src/match-imgs.py" to match the generated bigrams. The results from this will be used in the next and final step to create images of the full sentence
 6. Run "/3-matching-bigrams/src/generate-sentence.py" to combine the matched bigrams into a single image like the one below:
 
-![Interpolations between generated fonts](https://github.com/patrickgadd/fonts-generation-all/blob/master/assets/MACHINE-LEARNING-font-1.jpg)
+![Interpolations between generated fonts](https://raw.githubusercontent.com/patrickgadd/feel-the-kern/master/assets/MACHINE-LEARNING-font-1.jpg)
 
 And that's it!
